@@ -10,7 +10,6 @@ function App() {
   const animationContext = useStateMachineContext();
   const [state, send] = useActor(animationContext.animationService!);
 
-
   const isNextEventPossible = (eventType: AnimationEnum) => {
     return state.nextEvents.some((event: AnimationEnum) => event === eventType);
   }
@@ -31,6 +30,7 @@ function App() {
         {renderButton('bg-blue-600 hover:bg-blue-900', AnimationEnum.TRUNK_SCENARIO)}
         {renderButton('bg-blue-600 hover:bg-blue-900', AnimationEnum.GENERAL_SEQUENCES)}
       </div>
+      <span className="text-center mt-3">You have visited trunk scenario {state.context.count} times</span>
     </div>
   );
 }

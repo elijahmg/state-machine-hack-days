@@ -53,6 +53,7 @@ export const animationMachine = createMachine<ToggleContext, AnimationEvent>({
       }
     },
     [AnimationStateEnum.TRUNK]: {
+      entry: ['countTrunkVisits'],
       on: {
         IDLE_STATE: AnimationStateEnum.IDLE,
         INTRO_SEQUENCE: AnimationStateEnum.INTRO
@@ -66,6 +67,9 @@ export const animationMachine = createMachine<ToggleContext, AnimationEvent>({
     },
     notifyOnEntry: (context, event) => {
       console.log('Hey I\'m entering ' + event.type);
+    },
+    countTrunkVisits: (context) => {
+      context.count ++;
     }
   }
 });
